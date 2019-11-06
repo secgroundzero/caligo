@@ -1,0 +1,8 @@
+#Device DB Path
+DB_PATH="/var/www/html/caligo/Functions/devices.db"
+#Port.txt Path
+PORT_FILE="/var/www/html/caligo/Functions/php/port.txt"
+#Server Web Socket Port
+SOCKET_WEB_SOCKET_PORT=8081
+#MAXIMUM FIRST CONNECTIONS
+MAXIMUM_CONNECTIONS=5

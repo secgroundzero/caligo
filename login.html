@@ -1,0 +1,50 @@
+
+<html>
+<head>
+<link href="Theme/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="Theme/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+   <title>caligo - Login</title>
+    <link href="Theme/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="Theme/css/sb-admin.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Advent Pro' rel='stylesheet'>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+   <link href="Theme/scss/_navbar.scss" rel="stylesheet">
+</head>
+<body style="background-color:#3f3f3f;">
+<h4 style="color:white;margin-left:50px;margin-top:20px">caligo</h4>
+<div class="row">
+<div class="container" style="width:400px;margin-top:100px;">
+<!--<h2 style="color:white;margin-left:0px;">Login</h2>-->
+</br>
+<p id="error-message" style="display:none;color:red">Incorrect username and/or password</p>
+<div class="input-group mb-2" style="margin-left:0px">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="background-color:#3f3f3f;border-color:#3f3f3f" id="basic-addon1"><span class="fa fa-user" style="color:#86bc25"></span></span>
+  </div>
+  <input type="text" class="form-control" id="username" placeholder="Username" style="color:white;background-color:#3f3f3f;border-color:#3f3f3f;border:0;outline:0;border-bottom:1px solid white;" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+<div class="input-group mb-2" style="margin-left:0px;">
+  <div class="input-group-prepend" style="background-color:#3f3f3f;border-color:#3f3f3f">
+    <span class="input-group-text" id="basic-addon1" style="background-color:#3f3f3f;border-color:#3f3f3f"><span class="fa fa-lock" style="color:#86bc25"></span></span>
+  </div>
+  <input type="password" class="form-control" id="password" placeholder="Password" style="color:white;background-color:#3f3f3f;border-color:#3f3f3f;border:0;outline:0;border-bottom:1px solid white;" aria-label="Password" aria-describedby="basic-addon1">
+</div>
+</br>
+<button type="button" class="btn btn-default" style="margin-left:300px;color:white;background-color:#86bc25;" onclick="login()">Log in</button>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="Theme/vendor/jquery/jquery.min.js"></script>
+    <script src="Theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="Theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="Theme/vendor/jquery/jquery.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="Theme/js/sb-admin.min.js"></script>
+<script src="Theme/js/users.js"></script>
+</body>
+
+</html>

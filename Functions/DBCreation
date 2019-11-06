@@ -1,0 +1,19 @@
+CREATE TABLE users
+(
+    userID INTEGER PRIMARY KEY,
+    username TEXT,
+    passwordHash TEXT,
+    latestSession TEXT,
+    expiry DATETIME
+);
+
+CREATE TABLE devices
+(
+    deviceID INTEGER PRIMARY KEY,
+    DeviceName TEXT,
+    InternalIP TEXT,
+    ExternalIP TEXT,
+    PortConnection TEXT
+);
+
+INSERT INTO users(username, passwordHash, latestSession) VALUES ("root","63a9f0ea7bb98050796b649e85481845", "NOT_AVAILABLE");
