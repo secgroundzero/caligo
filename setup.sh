@@ -1,4 +1,5 @@
 sudo apt update
+sudo apt-get install php-sqlite3
 cd webssh2/app
 sudo apt install nodejs
 sudo apt install npm
