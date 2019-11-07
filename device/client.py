@@ -19,7 +19,6 @@ def getInternalIP():
 def getExternalIP():
 	#data=json.loads(urllib.urlopen("http://ifconfig.me/ip").read())
 	externalIP = get('https://api.ipify.org').text
-	#externalIP=data["ip"]
 	return externalIP
 
 def getRandomPort():
@@ -30,16 +29,6 @@ def checkifExists():
 		return True
 	else:
 		return False
-
-def getPublicKey():
-	if (checkifExists()):
-		f=open("/Users/stconstantinou/.ssh/id_rsa.pub","r")
-  		key=f.readline()
-  		return key.strip()
-  	#else:
-  	#	subprocess.call("ssh-keygen -t rsa -b 2048", shell=True)
-  	#	f=open("~/.ssh/id_rsa.pub","r")
-  	##	key=f.readline()
 
 def main():
 	#Read Config File
@@ -59,7 +48,6 @@ def main():
 	internalIP=getInternalIP()
 	externalIP=getExternalIP()
 	SSHport=getRandomPort()
-	#key=getPublicKey()
 	
 	info="DEVICE_NAME:"+str(DEVICE_NAME)+"|SSH_PORT:"+str(SSHport)+"|EXTERNAL_IP:"+str(externalIP)+"|INTERNAL_IP:"+str(internalIP)
 	# Create a socket object 
@@ -72,6 +60,7 @@ def main():
 	s.close()
 	print info
 	commandTo="ssh -N -R "+str(SSHport)+":localhost:"+str(SSH_PORT_SERVER) +" root@" + str(SERVER_IP)
+	#commandTo="autossh -M 0 root@"+ str(SERVER_IP) + " -p "+str(SSH_PORT_SERVER)+ " -N -R "+str(SSHport)+":localhost:"+str(SSH_PORT_SERVER)
 	print commandTo
 	subprocess.call(commandTo,shell=True)
 if __name__== "__main__":
