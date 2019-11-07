@@ -11,7 +11,7 @@ if ($linesCount>$latestLine){
 		$internaldeviceIP=explode(":",$split[3])[1];
 		$externaldeviceIP=explode(":",$split[2])[1];
 		$devicePort=intval(explode(":",$split[1])[1]);
-		$username=explode(":",$split[4])[1];
+		$username=str_replace("\n", "", explode(":",$split[4])[1]);
 		$new["DeviceName"]=$deviceName;
 		$new["DeviceInternalIP"]=$internaldeviceIP;
 		$new["DeviceExternalIP"]=$externaldeviceIP;
