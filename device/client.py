@@ -24,11 +24,6 @@ def getExternalIP():
 def getRandomPort():
 	return random.randint(40000,65535)
 
-def checkifExists():
-	if (os.path.exists("/Users/stconstantinou/.ssh/id_rsa.pub")):
-		return True
-	else:
-		return False
 
 def main():
 	#Read Config File
