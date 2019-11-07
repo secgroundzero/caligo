@@ -11,7 +11,7 @@ if ($pdo!=null){
 		$pdo = $sqlite->connect();
 		$res=$sqlite->logout();
 		if ($res){
-			file_put_contents("/var/www/html/C2Production/connectedDevices.txt", "");
+			file_put_contents("connectedDevices.txt", "");
 			$response=array(
 				"status"=>"success",
 				"logout" =>1
