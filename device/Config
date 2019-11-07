@@ -1,5 +1,5 @@
  # The server's IP address
-SERVER_IP=204.48.25.163
+SERVER_IP=XXX.XXX.XXX.XXX
 # The port used by the server
 SOCKET_PORT=8081  
 #The device name to be used by the server
