@@ -30,31 +30,29 @@ Caligo consists of the following:
 * DB_PATH - Absolute path of the DB location from the cloned folder
 * PORT_FILE - Absolute path of the ports.txt file. Default should be in the cloned folder
 * SOCKET_WEB_SOCKET_PORT - Must match the *config* on the client side
+* USER_FILE - Absolute path of the user.txt file. Default should be in the cloned folder
 
 **2. Device setup**
 
-2.1 Edit the parameters in the *config* file:
+2.1 Run *setup.sh* 
+
+2.2 Edit the parameters in the *config* file:
 
 * SERVER_IP - C2 server IP. Must be internet facing
 * SOCKET_PORT - Can keep as default. If you make changes here you also need to edit *SOCKET_WEB_SOCKET_PORT* parameter in the config file on the server. 
 * DEVICE_NAME - Name of your device that will appear on the C2 panel
 * SSH_PORT_SERVER - Change this if your C2 server's listening SSH port is other than 22
 
-2.2 SSH public key
+2.3 SSH public key
 
 * ssh-keygen -t rsa -b 2048 - Create SSH key on device
 
-Copy *id_rsa.pub* to the C2 server *~/.ssh/authorized_keys* 
-
+Copy *id_rsa.pub* to the C2 server *~/.ssh/authorized_keys*  
 
 #### Execution
 
 1. Run *start.sh* on the server
-2. Edit *.bashrc* file of the autologin user to run the *client.py* on each startup of the device.
-
-* Assuming you have a folder named caligo and client.py and config are in there
-
-```echo python ~/caligo/client.py >> .bashrc```
+2. Create the crontab which will run the script. Ex. **5 * * * * /bin/bash/[CALIGO DIR]/start.sh**. This will check every 5 minutes if the SSH process if running and restart it if not.
 
 If everything goes well with the installation when you visit  [http://<SERVER_IP>/caligo/login.html](http://<SERVER_IP>/caligo/login.html) you should be greeted with this
 
