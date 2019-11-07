@@ -7,7 +7,7 @@ sudo apt-get install sqlite3
 cd ../../Functions
 sqlite3 devices.db ".read DBCreation"
 chown www-data devices.db
-chmod +x 
+chmod +x devices.db
 cd php
 touch port.txt
 chown www-data port.txt
