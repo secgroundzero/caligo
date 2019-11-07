@@ -1,5 +1,9 @@
 sudo apt update
+sudo apt install apache2
+sudo apt install -y php7.2 php7.2-cli php7.2-common
+systemctl restart apache2
 sudo apt-get install php-sqlite3
+systemctl restart apache2
 cd webssh2/app
 sudo apt install nodejs
 sudo apt install npm
