@@ -5,7 +5,7 @@ Caligo is a simple C2 for hostile "dropbox" devices management used in physical 
 
 #### Communication
 
-Communication between the devices and the Caligo server works via reverse SSH and authentication to device via public key. In practise, the device should have a method for communicating with the server such as 3G or the target network depending on the egress rules.
+Communication between the devices and the Caligo server works via reverse SSH and authentication to the device via SSH public keys. In practise, the device should have a method for communicating with the server such as 3G or the target network depending on the egress rules.
 
 
 #### Architecture
@@ -52,7 +52,7 @@ Copy *id_rsa.pub* to the C2 server *~/.ssh/authorized_keys*
 1. Run *start.sh* on the server
 2. Edit *.bashrc* file of the autologin user to run the *client.py* on each startup of the device.
 
-* Assuming you have a folder named caligo and client.py and config are in there*
+* Assuming you have a folder named caligo and client.py and config are in there
 
 ```echo python ~/caligo/client.py >> .bashrc```
 
@@ -67,3 +67,15 @@ root/root
 
 The credentials can and **SHOULD** be changed.
 
+#### Logging
+
+The terminal keeps a full transcription logs which can be downloaded locally.
+
+![alt tag](https://github.com/secgroundzero/caligo/blob/master/caligo_logging.png)
+
+
+### Device Management
+
+Connections history is kept in a local sqlite database. At each run, the tool which check to see any of those connections are still alive. If not they will be displayed in grey color until removed from the GUI. 
+
+Incoming connections are checked every 5 minutes by default or by clicking the refresh button.
