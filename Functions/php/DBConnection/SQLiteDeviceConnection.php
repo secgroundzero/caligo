@@ -126,10 +126,10 @@ class SQLiteDeviceConnection
 	}
     }
 
-    public function addDevice($deviceName, $devicePort, $externaldeviceIP, $internaldeviceIP){
-        $query= "INSERT INTO devices(DeviceName, PortConnection, ExternalIP, InternalIP) VALUES ('$deviceName','$devicePort','$externaldeviceIP', '$internaldeviceIP')";
+    public function addDevice($deviceName, $devicePort, $externaldeviceIP, $internaldeviceIP, $username){
+        $query= "INSERT INTO devices(DeviceName, PortConnection, ExternalIP, InternalIP, Username) VALUES ('$deviceName','$devicePort','$externaldeviceIP', '$internaldeviceIP', '$username')";
         $stmt=$this->pdo->query($query);
-        $query="SELECT * FROM devices WHERE DeviceName='$deviceName' AND PortConnection='$devicePort' AND ExternalIP='$externaldeviceIP' AND InternalIP='$internaldeviceIP'";
+        $query="SELECT * FROM devices WHERE DeviceName='$deviceName' AND PortConnection='$devicePort' AND ExternalIP='$externaldeviceIP' AND InternalIP='$internaldeviceIP' AND Username='$username'";
         $stmt=$this->pdo->query($query);
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             return $row;

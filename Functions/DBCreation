@@ -13,7 +13,8 @@ CREATE TABLE devices
     DeviceName TEXT,
     InternalIP TEXT,
     ExternalIP TEXT,
-    PortConnection TEXT
+    PortConnection TEXT,
+    Username TEXT
 );
 
 INSERT INTO users(username, passwordHash, latestSession) VALUES ("root","63a9f0ea7bb98050796b649e85481845", "NOT_AVAILABLE");

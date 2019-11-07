@@ -7,7 +7,7 @@ var debug = require('debug')
 var debugWebSSH2 = require('debug')('WebSSH2')
 var SSH = require('ssh2').Client
 var fs=require('fs')
-var portFile="/var/www/html/caligo/Functions/php/port1.txt";
+var portFile="/var/www/html/caligo/Functions/php/port.txt";
 // var fs = require('fs')
 // var hostkeys = JSON.parse(fs.readFileSync('./hostkeyhashes.json', 'utf8'))
 var termCols, termRows
@@ -55,7 +55,8 @@ module.exports = function socket (socket) {
         return
       }
       var port = fs.readFileSync(portFile, 'utf8');
-      var connectionSSH="ssh localhost -p "+port+"\r"
+      var user=fs.readFileSync(userFile,'utf8');
+      var connectionSSH="ssh "+user+"@localhost -p "+port+"\r"
 	
       stream.write(connectionSSH);
       // poc to log commands from client

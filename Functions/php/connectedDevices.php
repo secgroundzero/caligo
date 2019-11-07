@@ -11,20 +11,26 @@ if ($linesCount>$latestLine){
 		$internaldeviceIP=explode(":",$split[3])[1];
 		$externaldeviceIP=explode(":",$split[2])[1];
 		$devicePort=intval(explode(":",$split[1])[1]);
+		$username=explode(":",$split[4])[1];
 		$new["DeviceName"]=$deviceName;
 		$new["DeviceInternalIP"]=$internaldeviceIP;
 		$new["DeviceExternalIP"]=$externaldeviceIP;
 		$new["DevicePort"]=$devicePort;
+		$new["username"]=$username;
 		$last=$latestLine+1;
 		$sqlite = new SQLiteDeviceConnection();
     		$pdo = $sqlite->connect();
 		if ($pdo != null) {
-			$newDev = $sqlite->addDevice($deviceName, $devicePort, $externaldeviceIP, $internaldeviceIP);
+			$newDev = $sqlite->addDevice($deviceName, $devicePort, $externaldeviceIP, $internaldeviceIP,$username);
 			$new["DeviceID"]=$newDev["deviceID"];
 			$portFile="port.txt";
 			$portFileH=fopen($portFile,'w') or die ("can't open file 2");
 			fwrite($portFileH,$devicePort);
 			fclose($portFileH);
+			$userFile="user.txt";
+			$userFileH=fopen($userFile,'w') or die ("can't  open file 3");
+			fwrite($userFileH, $username);
+			fclose($userFileH);
 			sleep(3);
 		}
 		else{
