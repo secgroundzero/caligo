@@ -1,0 +1,8 @@
+ # The server's IP address
+SERVER_IP=204.48.25.163
+# The port used by the server
+SOCKET_PORT=8081  
+#The device name to be used by the server
+DEVICE_NAME=myKali
+#Server's SSH PoRT
+SSH_PORT_SERVER=22
