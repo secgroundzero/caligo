@@ -1,0 +1,3 @@
+git rm --cached Functions/devices.db
+git rm --cached Functions/php/port.txt
+git rm --cached connectedDevices.txt
