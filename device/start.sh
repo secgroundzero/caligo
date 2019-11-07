@@ -1,2 +1,1 @@
-filepath=$PWD
-python $filepath"/client.py"
+python client.py
