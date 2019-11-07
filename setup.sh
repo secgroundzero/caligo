@@ -1,3 +1,5 @@
+sudo apt-get update
+sudo apt-get upgrade -y 
 sudo apt install -y php7.2 php7.2-cli php7.2-common
 systemctl restart apache2
 sudo apt-get install php-sqlite3

@@ -1,8 +1,0 @@
- # The server's IP address
-SERVER_IP=167.172.227.141
-# The port used by the server
-SOCKET_PORT=8081
-#The device name to be used by the server
-DEVICE_NAME=dropzone
-#Server's SSH PoRT
-SSH_PORT_SERVER=22
