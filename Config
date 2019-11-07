@@ -2,5 +2,7 @@
 DB_PATH="/var/www/html/caligo/Functions/devices.db"
 #Port.txt Path
 PORT_FILE="/var/www/html/caligo/Functions/php/port.txt"
+#user.txt Path
+USER_FILE="/var/www/html/caligo/Functions/php/user.txt"
 #Server Web Socket Port
 SOCKET_WEB_SOCKET_PORT=8081

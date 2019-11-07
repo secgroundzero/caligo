@@ -14,6 +14,7 @@ touch port.txt
 chown www-data port.txt
 touch connectedDevices.txt
 chown www-data connectedDevices.txt
+touch user.txt
+chown www-data user.txt
 cd ../..
 chown www-data Functions
-
