@@ -2,6 +2,7 @@ sudo apt update
 cd webssh2/app
 sudo apt install nodejs
 sudo apt install npm
+sudo apt-get install php-sqlite3
 sudo apt-get install sqlite3
 cd ../../Functions
 sqlite3 devices.db ".read DBCreation"
