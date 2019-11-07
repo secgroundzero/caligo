@@ -2,3 +2,4 @@ git rm --cached Functions/devices.db
 git rm --cached Functions/php/port.txt
 git rm --cached Functions/php/connectedDevices.txt
 git rm --cached Functions/php/user.txt
+git rm --cached device/port.txt
