@@ -5,7 +5,6 @@ import random
 import os
 import subprocess
 import getpass
-import psutil
 #Identify Internal IP
 def getInternalIP():
 
