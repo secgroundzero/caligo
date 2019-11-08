@@ -5,7 +5,6 @@ import random
 import os
 import subprocess
 import getpass
-import pexpect
 
 #Identify Internal IP
 def getInternalIP():
