@@ -63,8 +63,8 @@ def main():
 		process="ps -ef | grep -c "+ str(SSHport)
 		p=subprocess.check_output(process, shell=True)
 		if (int(p.strip())==1):
-		commandTo="autossh -M 0 "+str(SERVER_USER)+"@"+str(SERVER_IP)+" -N -R "+str(SSHport)+":localhost:"+str(SSH_PORT_SERVER)
-		subprocess.call(commandTo,shell=True)
+			commandTo="autossh -M 0 "+str(SERVER_USER)+"@"+str(SERVER_IP)+" -N -R "+str(SSHport)+":localhost:"+str(SSH_PORT_SERVER)
+			subprocess.call(commandTo,shell=True)
 	else:
 		SSHport=getRandomPort()
 		f=open("port.txt", "w")
