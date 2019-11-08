@@ -1,9 +1,9 @@
  # The server's IP address
-SERVER_IP=204.48.25.163
+SERVER_IP=XXX.XXX.XXX.XXX
 # The port used by the server
 SOCKET_PORT=8081  
 #The device name to be used by the server
-DEVICE_NAME=myPi
+DEVICE_NAME=XXXXX
 #Server's SSH PoRT
 SSH_PORT_SERVER=22
 #User Password TRUE/FALSE
