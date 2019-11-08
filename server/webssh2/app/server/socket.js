@@ -7,7 +7,11 @@ var debug = require('debug')
 var debugWebSSH2 = require('debug')('WebSSH2')
 var SSH = require('ssh2').Client
 var fs=require('fs')
-var portFile="/home/caligo/server/Functions/php/port.txt";var userFile="/home/caligo/server/Functions/php/user.txt";var termCols, termRows
+var portFile="/var/www/html/caligo/Functions/php/port.txt";
+var userFile="/var/www/html/caligo/Functions/php/user.txt";
+// var fs = require('fs')
+// var hostkeys = JSON.parse(fs.readFileSync('./hostkeyhashes.json', 'utf8'))
+var termCols, termRows
 var menuData = '<a id="logBtn"><i class="fas fa-clipboard fa-fw"></i> Start Log</a>' +
   '<a id="downloadLogBtn"><i class="fas fa-download fa-fw"></i> Download Log</a>'
 
@@ -172,3 +176,4 @@ module.exports = function socket (socket) {
     debugWebSSH2('SSHerror ' + myFunc + theError)
   }
 }
+

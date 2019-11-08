@@ -18,4 +18,4 @@ touch connectedDevices.txt
 touch user.txt
 cd ../../../../
 chown -R www-data caligo
-chmod 770 caligo
+chmod -R 770 caligo
