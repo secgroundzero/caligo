@@ -60,9 +60,9 @@ Copy *id_rsa.pub* to the C2 server *~/.ssh/authorized_keys*
 
 1. Run *start.sh* on the server
 2. Create the crontab or .bashrc entry which will run the script. 
-Ex. **/5 * * * * /bin/bash/[CALIGO DIR]/start.sh**. This will check every 5 minutes if the SSH process if running and restart it if not.
+Ex. **\*/5 * * * * cd [CALIGO DIR]/device && /bin/bash start.sh**. This will check every 5 minutes if the SSH process if running and restart it if not.
 
-If everything goes well with the installation when you visit  [http://<SERVER_IP>/caligo/login.html](http://<SERVER_IP>/caligo/login.html) you should be greeted with this
+If everything goes well with the installation when you visit  [http://<SERVER_IP>/webserver/login.html](http://<SERVER_IP>/weberver/login.html) you should be greeted with this
 
 ![alt tag](https://github.com/secgroundzero/caligo/blob/master/caligo_login.png)
 
