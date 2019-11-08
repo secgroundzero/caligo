@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>caligo - Dashboard</title>
+
+    <!-- Bootstrap core CSS-->
+    <style>
+.collapsible {
+    
+width:100%;
+    background-color:#3f3f3f;
+    color: white;
+    border: none;
+    outline: none;
+    text-align: left;    
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+.nav-link.active{
+   background-color:#86bc25;
+	color:#fff;
+	font-size:14px;
+}
+.nav-pills .nav-link.active {
+	color:white;
+	background-color:#86bc25;
+	font-size:14px;
+}
+
+.nav-pills .show>.nav-link {
+	background-color:#86bc25;
+}
+
+.nav-pills .nav-link{
+	color:'white',
+	font-size:14px;
+	margin-left:20px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.active, .collapsible:hover {
+    background-color: #3f3f3f;
+}
+
+.content {
+  padding: 0 6px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #3f3f3f;
+}
+</style>
+    <link href="Theme/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="Theme/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <!-- Custom styles for this template-->
+    <link href="Theme/css/sb-admin.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Advent Pro' rel='stylesheet'>
+   <link href="Theme/scss/_navbar.scss" rel="stylesheet">
+   <!-- Bootstrap core JavaScript-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="Theme/vendor/jquery/jquery.min.js"></script>
+    <script src="Theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="Theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="Theme/vendor/jquery/jquery.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="Theme/js/sb-admin.min.js"></script>
+    <script src="Theme/js/devices.js"></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+	<script>
+function checkAccess(){
+        var connectService="php/checkAccess.php";
+        var session=document.cookie;
+        $.ajax({
+                url:connectService,
+                data:{"session":session},
+                method:"POST",
+                success: function(result){
+                        var response=result;
+	                   if (response.access!=1){
+                                window.location.href="login.html";
+                        }
+                        else{
+                                loadDevices();
+                        }
+                },
+                error:function(res){
+                }
+        });
+
+}
+</script>
+  </head>
+
+  <body id="page-top" style="font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:14px;background-color:#343434" onload=checkAccess()>
+ <div id="header" style="margin-top:20px; margin-left:20px;margin-bottom:10px">
+	<div class="row" style="margin-left:20px">
+	<h5 href="#" style="color:white"> caligo</h5>
+	<div class="dropdown"style="margin-left:85%">
+	<button class="btn btn-secondary dropdown-toggle" id="dropdownMenuUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="background-color:#343434;border-color:#343434"><span class="fa fa-user" style="color:#86bc25"></span></button>
+	 <div class="dropdown-menu" aria-labelledby="dropdownMenuUser" style="margin-left:-120px">
+   	 <a class="dropdown-item" data-toggle="modal" data-target="#passwordModal"><span class="fa fa-cog" style="color:#86bc25">&emsp;</span>Change Password</a>
+    	<a class="dropdown-item" onclick="logout()"><span class="fa fa-sign-out-alt" style="color:#86bc25">&emsp;</span>Log out</a>
+  </div>
+	</div>
+	</div>
+ </div>
+ <div id="wrapper">
+  <div style="width:280px;">
+      <!--<button  data-toggle="modal" data-target="#newDeviceModal" style="background-color:#3f3f3f;border-color:#3f3f3f;margin-left:20px;margin-top:5px;background-color:#3f3f3f;height:65px">
+        <span style="font-size:12px;color:#ffffff;"><i class="fa fa-plus" style="color:#86bc25"></i></br>NEW DEVICE</span>
+      </button>-->
+       <div style="background-color:#343434;border-color:#343434;margin-left:10px;background-color:#3f3f3f;height:500px">
+          <div class="card-body" id="connected-devices">
+		<h5 style="font-size:13px;color:white">Device List</h5>
+		<hr>
+	</div>
+	</div>
+	</br>
+	 <button style="background-color:#3f3f3f;border-color:#3f3f3f;height:30px;margin-left:84%;width:40px" onclick="checkforNewConnection()">
+        <span style="font-size:12px;color:#ffffff"><i class="fa fa-sync" style="color:#86bc25"></i></br></span>
+       </button>
+      </br>
+  </div>
+<div id="infoBox" class="container" style="height:500px;margin-left:40px;width:75%;background-color:#3f3f3f;display:none">
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<p  style="color:white;margin-left:10px" class="lead">Online Devices: 0</p>
+<hr class="my-4">
+<p style="color:white;font-size:10px;margin-left:10px">Activate a device to interact</p>
+</div>
+<div id="collapse-tabContent" style="margin-left:40px;width:75%;display:none">
+  
+ </div>
+    </br>
+</div>
+</div>
+     
+    <div id="modals">
+	<!--Modal Settings-->
+	<div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Change Password</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body" style="font-size:15px">
+	     <label>Current Password:</label>
+              <input id="current-password" type="password" class="form-control form-control-sm" placeholder="Current Password">
+              <br>
+              <label>New Password:</label>
+              <input id="new-password"  type="password" class="form-control form-control-sm" placeholder="New Password">
+              <br>	     
+              <label>Confirm Password:</label>
+              <input id="confirm-password" type="password" class="form-control form-control-sm" placeholder="Confirm Password">
+              <br>
+              
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+              <button class="btn btn-primary" style="background-color:#86bc25;border-color:#86bc25" onclick="changePassword()" data-dismiss="modal">Change</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</br>
+	<div class="alert alert-success alert-dismissible fade" role="alert">
+   Password changed successfully.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="alert alert-warning alert-dismissible fade" role="alert">
+  Try Again. An error occured !!!
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+      <!-- Delete Modal-->
+    </div>
+</div>
+    
+    <!-- Bootstrap core JavaScript-->
+</html>
