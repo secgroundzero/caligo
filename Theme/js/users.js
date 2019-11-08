@@ -4,8 +4,6 @@ function login(){
 	var passwordHash = CryptoJS.MD5(document.getElementById("password").value).toString();
 	document.getElementById("username").value="";
 	document.getElementById("password").value="";
-	var username="root";
-	var passwordHash="63a9f0ea7bb98050796b649e85481845";
 	var data={"username":username, "passwordHash":passwordHash};
 	var connectService="Functions/php/login.php";
 	$.ajax({

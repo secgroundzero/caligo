@@ -18,7 +18,8 @@ if __name__=="__main__":
 		try:
 			c, addr = s.accept()
 			f=open("Functions/php/connectedDevices.txt","a")
-			f.write(c.recv(6072))
+			toWrite=c.recv(6072)+"\n"
+			f.write(toWrite)
 			f.close()
 			c.send('Thank you for connecting') 
 		except:
