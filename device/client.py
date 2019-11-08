@@ -5,6 +5,8 @@ import random
 import os
 import subprocess
 import getpass
+import pexpect
+
 #Identify Internal IP
 def getInternalIP():
 
@@ -44,6 +46,14 @@ def main():
                 	DEVICE_NAME=l[12:len(l)].strip().replace(" ","")
                 elif(l.startswith("SSH_PORT_SERVER")):
                 	SSH_PORT_SERVER=l[16:len(l)].strip().replace(" ", "")
+		elif(l.startswith("PASSWORD_USE")):
+			passwordUse=l[13:len(l)].strip().replace(" ","")
+			if (passwordUse.startswith("TRUE")):
+				PASSWORD_USE=True
+				print ">> Ensure that you will provide your password on each run"
+			else:
+				print ">> Ensure that your id_rsa.pub has been copied to server's ~/.ssh/authorized_keys"
+				PASSWORD_USE=False
 
 	if (checkPortFile()):
 		f=open("port.txt", "r")
@@ -52,8 +62,8 @@ def main():
 		process="ps -ef | grep -c "+ str(SSHport)
 		p=subprocess.check_output(process, shell=True)
 		if (int(p.strip())==1):
-			commandTo="autossh -M 0 root@"+str(SERVER_IP)+" -N -R "+str(SSHport)+":localhost:"+str(SSH_PORT_SERVER)
-		        subprocess.call(commandTo,shell=True)
+		commandTo="autossh -M 0 root@"+str(SERVER_IP)+" -N -R "+str(SSHport)+":localhost:"+str(SSH_PORT_SERVER)
+		subprocess.call(commandTo,shell=True)
 	else:
 		SSHport=getRandomPort()
 		f=open("port.txt", "w")
