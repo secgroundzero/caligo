@@ -12,7 +12,7 @@ sudo apt-get install php-sqlite3
 sudo apt-get install sqlite3
 cd ../../Functions
 sqlite3 devices.db ".read DBCreation"
-cd ../php
+cd php
 touch port.txt
 touch connectedDevices.txt
 touch user.txt
