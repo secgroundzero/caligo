@@ -53,6 +53,8 @@ def main():
 			else:
 				print ">> Ensure that your id_rsa.pub has been copied to server's ~/.ssh/authorized_keys"
 				PASSWORD_USE=False
+		elif(l.startswith("SERVER_USER=")):
+			SERVER_USER=l[12:len(l)].strip().replace(" ","")
 
 	if (checkPortFile()):
 		f=open("port.txt", "r")
@@ -61,7 +63,7 @@ def main():
 		process="ps -ef | grep -c "+ str(SSHport)
 		p=subprocess.check_output(process, shell=True)
 		if (int(p.strip())==1):
-		commandTo="autossh -M 0 root@"+str(SERVER_IP)+" -N -R "+str(SSHport)+":localhost:"+str(SSH_PORT_SERVER)
+		commandTo="autossh -M 0 "+str(SERVER_USER)+"@"+str(SERVER_IP)+" -N -R "+str(SSHport)+":localhost:"+str(SSH_PORT_SERVER)
 		subprocess.call(commandTo,shell=True)
 	else:
 		SSHport=getRandomPort()
@@ -81,8 +83,7 @@ def main():
 		#close socket
 		s.close()
 		print info
-			
-		commandTo="autossh -M 0 root@"+str(SERVER_IP)+" -N -R "+str(SSHport)+":localhost:"+str(SSH_PORT_SERVER)
+		commandTo="autossh -M 0 "+str(SERVER_USER)+"@"+str(SERVER_IP)+" -N -R "+str(SSHport)+":localhost:"+str(SSH_PORT_SERVER)
 		print commandTo
 		subprocess.call(commandTo,shell=True)
 
