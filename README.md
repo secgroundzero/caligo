@@ -20,7 +20,7 @@ Caligo consists of the following:
 
 #### Prerequisites
 
-You will need to have Apache installed and the move the folder webserver from the cloned project under **/var/www/html/**
+You will need to have Apache installed and the move the folder *webserver* from the cloned project under **/var/www/html/**
 
 #### Setup
 
