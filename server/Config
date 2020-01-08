@@ -1,10 +1,10 @@
 #Device DB Path
-DB_PATH="/home/caligo/server/Functions/devices.db"
+DB_PATH="/var/www/html/caligo/server/Functions/devices.db"
 #Port.txt Path
-PORT_FILE="/home/caligo/server/Functions/php/port.txt"
+PORT_FILE="/var/www/html/caligo/server/Functions/php/port.txt"
 #user.txt Path
-USER_FILE="/home/caligo/server/Functions/php/user.txt"
+USER_FILE="/var/www/html/caligo/server/Functions/php/user.txt"
 #connectedDevices.txt Path
-CONNECTED_DEVICES_FILE="/home/caligo/server/Functions/php/connectedDevices.txt"
+CONNECTED_DEVICES_FILE="/var/www/html/caligo/server/Functions/php/connectedDevices.txt"
 #Server Web Socket Port
 SOCKET_WEB_SOCKET_PORT=8081
