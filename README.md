@@ -5,7 +5,7 @@ Caligo is a simple C2 for hostile "dropbox" devices management used in physical 
 
 #### Communication
 
-Communication between the devices and the Caligo server works via reverse SSH sp that the devices will always call back to the server eliminating the need of knowing the external IP of each device. In practise, the device should have a method for communicating with the server such as 3G or the target network depending on the egress rules.
+Communication between the devices and the Caligo server works via reverse SSH so that the devices will always call back to the server eliminating the need of knowing the external IP of each device. In practise, the device should have a method for communicating with the server such as 3G or the target network depending on the egress rules.
 
 
 #### Architecture
@@ -26,12 +26,12 @@ You will need to have Apache installed and the move the folder webserver from th
 
 **1. Server setup** 
  
-1.1 Run *setup.sh* which will look for the dependencies, install if missing and start the server module.
+1.1 Run */server/setup.sh* which will look for the dependencies, install if missing and start the server module.
 
 1.2 Edit the *Config* file
 
 * DB_PATH - Absolute path of the DB location from the cloned folder
-* PORT_FILE - Absolute path of the ports.txt file. Default should be in the cloned folder
+* PORT_FILE - Absolute path of the ports.txt file. Default should be in the cloned folder. 
 * USER_FILE - Absolute path of the user.txt file. Default should be in the cloned folder
 * SOCKET_WEB_SOCKET_PORT - Must match the *config* on the client side
 
@@ -58,7 +58,7 @@ Copy *id_rsa.pub* to the C2 server *~/.ssh/authorized_keys*
 
 #### Execution
 
-1. Run *start.sh* on the server
+1. Run */server/start.sh* on the server
 2. Create the crontab or .bashrc entry which will run the script. 
 Ex. **\*/5 * * * * cd [CALIGO DIR]/device && /bin/bash start.sh**. This will check every 5 minutes if the SSH process if running and restart it if not.
 
